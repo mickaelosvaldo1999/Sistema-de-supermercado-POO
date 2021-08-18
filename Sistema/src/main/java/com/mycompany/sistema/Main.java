@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         TelaLogin Slogin = new TelaLogin();
         Slogin.setVisible(true);
-        System.err.println("Hello");
+        //MD5.main();
     }
-    
 }
