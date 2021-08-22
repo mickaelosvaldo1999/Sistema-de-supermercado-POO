@@ -18,7 +18,7 @@ public class Gerente extends Pessoa{
      public int getPrivilégio() {
         return privilégio;
     }
-     public void AlterarNome(String nome) {
-         
-     }
+    public void funcao(String name) {
+        super.setNome(name);
+    }
 }

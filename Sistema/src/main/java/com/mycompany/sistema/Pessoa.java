@@ -9,7 +9,7 @@ package com.mycompany.sistema;
  *
  * @author micka
  */
-public class Pessoa {
+public abstract class Pessoa {
     private String nome,login,senha;
 
     public Pessoa(String nome, String login, String senha) {
@@ -29,5 +29,10 @@ public class Pessoa {
     public String getSenha() {
         return senha;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
+    public abstract void funcao(String name);
 }

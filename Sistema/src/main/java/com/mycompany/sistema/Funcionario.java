@@ -7,6 +7,7 @@ package com.mycompany.sistema;
 
 public class Funcionario extends Pessoa{
     private int privilégio;
+    private String cliente;
 
     public Funcionario(String nome, String login, String senha, int privilégio) {
         super(nome, login, senha);
@@ -16,5 +17,7 @@ public class Funcionario extends Pessoa{
     public int getPrivilégio() {
         return privilégio;
     }
-    
+    public void funcao(String name) {
+        this.cliente = name;
+    }
 }
