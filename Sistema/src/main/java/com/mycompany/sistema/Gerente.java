@@ -21,4 +21,8 @@ public class Gerente extends Pessoa{
     public void funcao(String name) {
         super.setNome(name);
     }
+    public String StaffMensage() {
+        String mensagem =("Permissão para alterar concedida a: "+super.getNome());
+        return mensagem;
+    }
 }
