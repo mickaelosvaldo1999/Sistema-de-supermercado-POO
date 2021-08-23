@@ -8,6 +8,7 @@ package View;
 import com.mycompany.sistema.Funcionario;
 import com.mycompany.sistema.Gerente;
 import com.mycompany.sistema.item;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -104,12 +105,12 @@ public class Menu extends javax.swing.JFrame {
         tabelaDados = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         CodigoBarrasVender = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        CampoVenderQuantidade = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botaovender = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        textoValor = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         textoEditar = new javax.swing.JLabel();
@@ -161,20 +162,31 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        CampoVenderQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoVenderQuantidadeActionPerformed(evt);
+            }
+        });
+        CampoVenderQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoVenderQuantidadeKeyTyped(evt);
+            }
+        });
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("CÓDIGO DE BARRAS");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("QUANTIDADE");
 
-        jButton2.setText("VENDER");
-        jButton2.setEnabled(false);
+        botaovender.setText("VENDER");
+        botaovender.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("VALOR TOTAL: ");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("0");
+        textoValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        textoValor.setText("0");
 
         javax.swing.GroupLayout painel2Layout = new javax.swing.GroupLayout(painel2);
         painel2.setLayout(painel2Layout);
@@ -186,10 +198,10 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(painel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
                     .addGroup(painel2Layout.createSequentialGroup()
                         .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaovender, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painel2Layout.createSequentialGroup()
                                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
@@ -200,10 +212,10 @@ public class Menu extends javax.swing.JFrame {
                                     .addGroup(painel2Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6))
+                                        .addComponent(textoValor))
                                     .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(CodigoBarrasVender)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))))
+                                        .addComponent(CampoVenderQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         painel2Layout.setVerticalGroup(
@@ -221,14 +233,14 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(8, 8, 8)
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoVenderQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(textoValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaovender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -364,6 +376,31 @@ public class Menu extends javax.swing.JFrame {
         CodigoBarrasVender.setText(tabela.getValueAt(tabelaDados.getSelectedRow(), 0).toString());  
     }//GEN-LAST:event_tabelaDadosMouseClicked
 
+    private void CampoVenderQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoVenderQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoVenderQuantidadeActionPerformed
+
+    private void CampoVenderQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoVenderQuantidadeKeyTyped
+       //HABILITA OU NÃO O BOTÃO DE VENDER
+        char c = evt.getKeyChar();
+        //VARIAVEL COM O´PREÇO DO ITEM
+        double total = Double.parseDouble(tabela.getValueAt(tabelaDados.getSelectedRow(), 3).toString());
+        //VERIFICA SE É UM NUMERO DIGITADO NO CAMPO DE QUANTIDADE
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            //VERIFICA SE A QUANTIDADE DIGITADA E MENOR QUE A QUANTIDADE DISPONIVEL
+            if (Integer.parseInt(CampoVenderQuantidade.getText()) <= Integer.parseInt(tabela.getValueAt(tabelaDados.getSelectedRow(), 2).toString())) {
+                botaovender.setEnabled(true);
+                total = total * Integer.parseInt(CampoVenderQuantidade.getText());
+                //FORMATANDO O NÚMERO
+                DecimalFormat format = new DecimalFormat("0.0#");
+                textoValor.setText("R$ "+String.valueOf(format.format(total)));
+            } else {
+                botaovender.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_CampoVenderQuantidadeKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -398,11 +435,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoVenderQuantidade;
     private javax.swing.JTextField CodigoBarrasVender;
     private javax.swing.JLabel NomePessoa;
     private javax.swing.JButton botaoAlteradorNome;
+    private javax.swing.JButton botaovender;
     private javax.swing.JTextField campoAlteradorNome;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -411,17 +449,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel painel2;
     private javax.swing.JPanel painelPrincipal;
     private javax.swing.JTable tabelaDados;
     private javax.swing.JLabel textoEditar;
+    private javax.swing.JLabel textoValor;
     // End of variables declaration//GEN-END:variables
 }
