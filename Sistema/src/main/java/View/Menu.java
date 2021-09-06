@@ -8,8 +8,10 @@ package View;
 import com.mycompany.sistema.Funcionario;
 import com.mycompany.sistema.Gerente;
 import com.mycompany.sistema.item;
+import java.security.Permission;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,12 +59,11 @@ public class Menu extends javax.swing.JFrame {
         control++;
         }
     }
-    
     //IMPORTA OS USUÁRIOS CRIADOS
     private Funcionario funcionario;
     private Gerente gerente;
     private int privilegio;
-    
+    //DEFINE A VARAVEL DA PERMISSÃO PARA EDITAR A TABELA
     public void eFuncionario(Funcionario f1) {
         funcionario = f1;
         //CONFIGURA O NOME DOS FUNCIONÁRIOS NOS LUGARES CERTOS.
@@ -142,7 +143,6 @@ public class Menu extends javax.swing.JFrame {
                 "CÓDIGO DE BARRAS", "NOME", "QUANTIDADE", "PREÇO"
             }
         ));
-        tabelaDados.setEnabled(false);
         tabelaDados.setShowGrid(false);
         tabelaDados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,7 +155,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel5.setText("VENDER/ACESSO RÁPIDO");
 
         CodigoBarrasVender.setEditable(false);
-        CodigoBarrasVender.setEnabled(false);
         CodigoBarrasVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CodigoBarrasVenderActionPerformed(evt);
@@ -181,6 +180,11 @@ public class Menu extends javax.swing.JFrame {
 
         botaovender.setText("VENDER");
         botaovender.setEnabled(false);
+        botaovender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaovenderActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("VALOR TOTAL: ");
@@ -266,7 +270,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(painelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelPrincipalLayout.createSequentialGroup()
@@ -370,14 +374,23 @@ public class Menu extends javax.swing.JFrame {
         gerente.funcao(campoAlteradorNome.getText());
         eGerente(gerente);
     }//GEN-LAST:event_botaoAlteradorNomeActionPerformed
-
+    public int aux = 0;
     private void tabelaDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDadosMouseClicked
         //COLOCA OS VALORES NOS CAMPOS DE VEMDA
-        CodigoBarrasVender.setText(tabela.getValueAt(tabelaDados.getSelectedRow(), 0).toString());  
+        int permission = 0;
+        if (!textoEditar.getText().equals("Sem permissão para alterar o estoque")) {
+            permission = gerente.getPrivilégio();
+        }
+        //SETA O CAMPO CHAVE COM O ID DA LINHA SELECIONADA
+        CodigoBarrasVender.setText(tabela.getValueAt(tabelaDados.getSelectedRow(), 0).toString());
+        //EXIBE UMA MENSAGEM PARA QUE A TABELA NÃO POSSA SER EDITADA
+        if (permission == 0) {
+            JOptionPane.showMessageDialog(null, "Linha selecionada!");
+        }
     }//GEN-LAST:event_tabelaDadosMouseClicked
 
     private void CampoVenderQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoVenderQuantidadeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_CampoVenderQuantidadeActionPerformed
 
     private void CampoVenderQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoVenderQuantidadeKeyTyped
@@ -400,6 +413,15 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_CampoVenderQuantidadeKeyTyped
+
+    private void botaovenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaovenderActionPerformed
+        int menos = Integer.parseInt(tabela.getValueAt(tabelaDados.getSelectedRow(), 2).toString()) - Integer.parseInt(CampoVenderQuantidade.getText());
+        if (menos >= 0) {
+            tabelaDados.setValueAt(menos,tabelaDados.getSelectedRow(),2);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO 12 - QUANTIDADE INVÁLIDA");
+        }
+    }//GEN-LAST:event_botaovenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,7 +455,6 @@ public class Menu extends javax.swing.JFrame {
             new Menu().setVisible(true);
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CampoVenderQuantidade;
     private javax.swing.JTextField CodigoBarrasVender;

@@ -10,7 +10,7 @@ package com.mycompany.sistema;
  * @author micka
  */
 public class Gerente extends Pessoa{
-    private int privilégio;
+    private int privilégio = 1;
      public Gerente(String nome, String login, String senha, int privilégio) {
         super(nome, login, senha);
         this.privilégio = privilégio;

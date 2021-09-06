@@ -113,7 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String pass = new String (CampoSenha.getPassword());
-        //Verificando se não é um funcionário
+        //VERIFICANDO SE É UM FUNCIONÁRIO
         if (CampoLogin.getText().equals(funcionario.getLogin()) && pass.equals(funcionario.getSenha())) {
             JOptionPane.showMessageDialog(null, "Bem vindo , "+funcionario.getNome());
             Menu menu = new Menu();
@@ -121,7 +121,7 @@ public class TelaLogin extends javax.swing.JFrame {
             menu.setVisible(true);
             this.setVisible(false);
         } 
-        //Verificando se não é um gerente
+        //VERIFICANDO SE É UM GERENTE
         else if(CampoLogin.getText().equals(gerente.getLogin()) && pass.equals(gerente.getSenha())){
             JOptionPane.showMessageDialog(null, "Bem vindo sr gerente: "+gerente.getNome());
             Menu menu = new Menu();

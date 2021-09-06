@@ -6,7 +6,7 @@
 package com.mycompany.sistema;
 
 public class Funcionario extends Pessoa{
-    private int privilégio;
+    private int privilégio = 0;
     private String cliente;
 
     public Funcionario(String nome, String login, String senha, int privilégio) {
