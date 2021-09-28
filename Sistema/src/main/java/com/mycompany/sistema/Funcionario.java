@@ -17,6 +17,9 @@ public class Funcionario extends Pessoa{
     public int getPrivilégio() {
         return privilégio;
     }
+    public String getcliente() {
+        return cliente;
+    }
     public void funcao(String name) {
         this.cliente = name;
     }

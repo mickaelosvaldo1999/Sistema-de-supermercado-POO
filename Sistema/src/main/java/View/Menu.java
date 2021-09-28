@@ -71,6 +71,9 @@ public class Menu extends javax.swing.JFrame {
         campoAlteradorNome.setText(f1.getNome());
         //INICIALIZANDO TABELA DE DADOS
         this.inicializar();
+        //LIBERA O CAMPO DE CLIENTES E O BOTÃO
+        CampoCliente.setEnabled(true);
+        botaocliente.setEnabled(true);
     }
     public void eGerente(Gerente g1) {
         gerente = g1;
@@ -112,6 +115,8 @@ public class Menu extends javax.swing.JFrame {
         botaovender = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         textoValor = new javax.swing.JLabel();
+        CampoCliente = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         textoEditar = new javax.swing.JLabel();
@@ -120,6 +125,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         campoAlteradorNome = new javax.swing.JTextField();
         botaoAlteradorNome = new javax.swing.JButton();
+        botaocliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
@@ -192,6 +198,16 @@ public class Menu extends javax.swing.JFrame {
         textoValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         textoValor.setText("0");
 
+        CampoCliente.setEnabled(false);
+        CampoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("CLIENTE");
+
         javax.swing.GroupLayout painel2Layout = new javax.swing.GroupLayout(painel2);
         painel2.setLayout(painel2Layout);
         painel2Layout.setHorizontalGroup(
@@ -205,21 +221,21 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
                     .addGroup(painel2Layout.createSequentialGroup()
                         .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(25, 25, 25)
+                        .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botaovender, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painel2Layout.createSequentialGroup()
-                                .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
-                                .addGap(25, 25, 25)
-                                .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(textoValor))
-                                    .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(CodigoBarrasVender)
-                                        .addComponent(CampoVenderQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textoValor))
+                            .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(CampoCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CodigoBarrasVender, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CampoVenderQuantidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         painel2Layout.setVerticalGroup(
@@ -239,13 +255,17 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CampoVenderQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CampoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(11, 11, 11)
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(textoValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaovender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(painel2);
@@ -327,6 +347,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        botaocliente.setText("VERIFICAR ULTIMO CLIENTE");
+        botaocliente.setEnabled(false);
+        botaocliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoclienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,14 +373,19 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(campoAlteradorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botaoAlteradorNome)))
+                        .addComponent(botaoAlteradorNome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botaocliente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(35, 35, 35)
+                .addComponent(botaocliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -399,6 +432,7 @@ public class Menu extends javax.swing.JFrame {
         //VARIAVEL COM O´PREÇO DO ITEM
         double total = Double.parseDouble(tabela.getValueAt(tabelaDados.getSelectedRow(), 3).toString());
         //VERIFICA SE É UM NUMERO DIGITADO NO CAMPO DE QUANTIDADE
+        
         if (!Character.isDigit(c)) {
             evt.consume();
             //VERIFICA SE A QUANTIDADE DIGITADA E MENOR QUE A QUANTIDADE DISPONIVEL
@@ -418,10 +452,21 @@ public class Menu extends javax.swing.JFrame {
         int menos = Integer.parseInt(tabela.getValueAt(tabelaDados.getSelectedRow(), 2).toString()) - Integer.parseInt(CampoVenderQuantidade.getText());
         if (menos >= 0) {
             tabelaDados.setValueAt(menos,tabelaDados.getSelectedRow(),2);
+            if (CampoCliente.isEnabled()) {
+                funcionario.funcao(CampoCliente.getText());
+            }
         } else {
             JOptionPane.showMessageDialog(null, "ERRO 12 - QUANTIDADE INVÁLIDA");
         }
     }//GEN-LAST:event_botaovenderActionPerformed
+
+    private void CampoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoClienteActionPerformed
+
+    private void botaoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoclienteActionPerformed
+        JOptionPane.showMessageDialog(null, "O seu ultimo cliente foi: "+funcionario.getcliente());
+    }//GEN-LAST:event_botaoclienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,14 +501,17 @@ public class Menu extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoCliente;
     private javax.swing.JTextField CampoVenderQuantidade;
     private javax.swing.JTextField CodigoBarrasVender;
     private javax.swing.JLabel NomePessoa;
     private javax.swing.JButton botaoAlteradorNome;
+    private javax.swing.JButton botaocliente;
     private javax.swing.JButton botaovender;
     private javax.swing.JTextField campoAlteradorNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

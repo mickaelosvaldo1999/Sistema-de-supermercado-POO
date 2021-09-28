@@ -116,6 +116,7 @@ public class TelaLogin extends javax.swing.JFrame {
         //VERIFICANDO SE É UM FUNCIONÁRIO
         if (CampoLogin.getText().equals(funcionario.getLogin()) && pass.equals(funcionario.getSenha())) {
             JOptionPane.showMessageDialog(null, "Bem vindo , "+funcionario.getNome());
+             //INICIANDO A APLICAÇÃO COMO FUNCIONÁRIO
             Menu menu = new Menu();
             menu.eFuncionario(funcionario);
             menu.setVisible(true);
@@ -124,6 +125,7 @@ public class TelaLogin extends javax.swing.JFrame {
         //VERIFICANDO SE É UM GERENTE
         else if(CampoLogin.getText().equals(gerente.getLogin()) && pass.equals(gerente.getSenha())){
             JOptionPane.showMessageDialog(null, "Bem vindo sr gerente: "+gerente.getNome());
+            //INICIANDO A APLICAÇÃO COMO GERENTE
             Menu menu = new Menu();
             menu.eGerente(gerente);
             menu.setVisible(true);
